@@ -1,0 +1,16 @@
+# Source files (on publie seulement le build)
+src/
+tsconfig.json
+
+# Test files
+test-*.js
+
+# Development files
+.env
+.env.*
+.git/
+.gitignore
+
+# Documentation de développement
+node_modules/
+*.log

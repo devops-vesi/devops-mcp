@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { Octokit } from "octokit";
@@ -6,8 +7,10 @@ const server = new McpServer({
     name: "devops",
     version: "1.0.0",
 });
+// Token optionnel : pour repos publics, pas besoin d'auth
+// Avec token : 5000 requêtes/heure, sans token : 60 requêtes/heure
 const octokit = new Octokit({
-    auth: process.env.GITHUB_TOKEN
+    auth: process.env.GITHUB_TOKEN || undefined
 });
 async function listSkills(category) {
     try {
