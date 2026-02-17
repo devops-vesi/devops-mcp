@@ -61,7 +61,7 @@ async function fetchSkill(skillName: string) {
 server.registerTool(
     "list_skills",
     {
-        description: "Liste tous les skills DevOps disponibles dans le repository GitHub. Utilisez ce tool pour découvrir les templates de documentation, standards de code, et autres skills disponibles.",
+        description: "Liste tous les skills DevOps disponibles (templates de documentation SAP Fiori, standards de code). À utiliser AVANT de générer de la documentation ou de lire le contenu du projet.",
         inputSchema: {
             category: z.string()
                 .optional()
@@ -97,7 +97,7 @@ server.registerTool(
 server.registerTool(
     "fetch_skill",
     {
-        description: "Récupère le contenu d'un skill DevOps depuis le repository GitHub",
+        description: "Récupère un skill DevOps depuis GitHub (templates de documentation, standards de code, bonnes pratiques).Utiliser quand l'utilisateur demande de générer de la documentation, appliquer des standards, ou utiliser un template.",
         inputSchema: z.object({
             skillName: z.string().describe("Le nom du skill à récupérer")
         })
