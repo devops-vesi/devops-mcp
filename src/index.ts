@@ -64,11 +64,11 @@ async function fetchSkill(skillName: string) {
 server.registerTool(
     "list_skills",
     {
-        description: "Liste tous les skills DevOps disponibles (templates de documentation SAP Fiori, standards de code). À utiliser AVANT de générer de la documentation ou de lire le contenu du projet.",
+        description: "Lists all available DevOps skills (SAP Fiori documentation templates, code standards, best practices). Use this tool BEFORE generating documentation or reading project content.",
         inputSchema: {
             category: z.string()
                 .optional()
-                .describe("Catégorie optionnelle pour filtrer les skills")
+                .describe("Optional category to filter skills")
         }
     },
     async ({ category }) => {
@@ -82,14 +82,14 @@ server.registerTool(
             return {
                 content: [{
                     type: "text",
-                    text: `# Skills Disponibles\n\n${formattedSkills}\n\n**Total**: ${skills.length} skill(s)`
+                    text: `# Available Skills\n\n${formattedSkills}\n\n**Total**: ${skills.length} skill(s)`
                 }]
             };
         } catch (error) {
             return {
                 content: [{
                     type: "text",
-                    text: `Erreur lors de la récupération des skills: ${error instanceof Error ? error.message : 'Erreur inconnue'}`
+                    text: `Error while fetching skills: ${error instanceof Error ? error.message : 'Unknown error'}`
                 }],
                 isError: true
             };
@@ -100,9 +100,9 @@ server.registerTool(
 server.registerTool(
     "fetch_skill",
     {
-        description: "Récupère un skill DevOps depuis GitHub (templates de documentation, standards de code, bonnes pratiques).Utiliser quand l'utilisateur demande de générer de la documentation, appliquer des standards, ou utiliser un template.",
+        description: "Fetches a DevOps skill from GitHub (documentation templates, code standards, best practices). Use when the user requests to generate documentation, apply standards, or use a template.",
         inputSchema: z.object({
-            skillName: z.string().describe("Le nom du skill à récupérer")
+            skillName: z.string().describe("The name of the skill to fetch")
         })
     },
     async ({ skillName }) => {
@@ -121,7 +121,7 @@ server.registerTool(
                 content: [
                     {
                         type: "text",
-                        text: `Erreur: ${error instanceof Error ? error.message : "Erreur inconnue"}`
+                        text: `Error: ${error instanceof Error ? error.message : "Unknown error"}`
                     }
                 ],
                 isError: true

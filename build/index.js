@@ -7,8 +7,6 @@ const server = new McpServer({
     name: "devops",
     version: "1.0.0",
 });
-// Token optionnel : pour repos publics, pas besoin d'auth
-// Avec token : 5000 requêtes/heure, sans token : 60 requêtes/heure
 const octokit = new Octokit({
     auth: process.env.GITHUB_TOKEN || undefined
 });
@@ -49,11 +47,11 @@ async function fetchSkill(skillName) {
     throw new Error(`Impossible de récupérer le skill "${skillName}"`);
 }
 server.registerTool("list_skills", {
-    description: "Liste tous les skills DevOps disponibles (templates de documentation SAP Fiori, standards de code). À utiliser AVANT de générer de la documentation ou de lire le contenu du projet.",
+    description: "Lists all available DevOps skills (SAP Fiori documentation templates, code standards, best practices). Use this tool BEFORE generating documentation or reading project content.",
     inputSchema: {
         category: z.string()
             .optional()
-            .describe("Catégorie optionnelle pour filtrer les skills")
+            .describe("Optional category to filter skills")
     }
 }, async ({ category }) => {
     try {
@@ -62,7 +60,7 @@ server.registerTool("list_skills", {
         return {
             content: [{
                     type: "text",
-                    text: `# Skills Disponibles\n\n${formattedSkills}\n\n**Total**: ${skills.length} skill(s)`
+                    text: `# Available Skills\n\n${formattedSkills}\n\n**Total**: ${skills.length} skill(s)`
                 }]
         };
     }
@@ -70,16 +68,16 @@ server.registerTool("list_skills", {
         return {
             content: [{
                     type: "text",
-                    text: `Erreur lors de la récupération des skills: ${error instanceof Error ? error.message : 'Erreur inconnue'}`
+                    text: `Error while fetching skills: ${error instanceof Error ? error.message : 'Unknown error'}`
                 }],
             isError: true
         };
     }
 });
 server.registerTool("fetch_skill", {
-    description: "Récupère un skill DevOps depuis GitHub (templates de documentation, standards de code, bonnes pratiques).Utiliser quand l'utilisateur demande de générer de la documentation, appliquer des standards, ou utiliser un template.",
+    description: "Fetches a DevOps skill from GitHub (documentation templates, code standards, best practices). Use when the user requests to generate documentation, apply standards, or use a template.",
     inputSchema: z.object({
-        skillName: z.string().describe("Le nom du skill à récupérer")
+        skillName: z.string().describe("The name of the skill to fetch")
     })
 }, async ({ skillName }) => {
     try {
@@ -98,7 +96,7 @@ server.registerTool("fetch_skill", {
             content: [
                 {
                     type: "text",
-                    text: `Erreur: ${error instanceof Error ? error.message : "Erreur inconnue"}`
+                    text: `Error: ${error instanceof Error ? error.message : "Unknown error"}`
                 }
             ],
             isError: true

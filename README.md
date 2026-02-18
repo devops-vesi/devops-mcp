@@ -1,38 +1,39 @@
+
 # DevOps MCP
 
-MCP (Model Context Protocol) server pour récupérer des skills DevOps depuis GitHub (templates de documentation SAP Fiori, standards de code, bonnes pratiques).
+MCP (Model Context Protocol) server to fetch DevOps skills from GitHub (SAP Fiori documentation templates, code standards, best practices).
 
 ## Installation
 
-### Installation simplifiée (pour vos collègues)
+### Quick installation (for your colleagues)
 
-1. Installer le package :
+1. Install the package:
 ```bash
-npm install -g @devops/mcp
+npm install -g @devops-vinci/mcp
 ```
 
-2. Cliquer sur ce lien pour auto-configurer VS Code (configuration complète incluse) :
+2. Click this link to auto-configure VS Code (fully pre-configured):
 
-**[📦 Installer DevOps MCP - Vinci Energies](vscode:mcp/install?%7B%22name%22%3A%22devops%22%2C%22command%22%3A%22node%22%2C%22args%22%3A%5B%22%40devops%2Fmcp%22%5D%2C%22env%22%3A%7B%22GITHUB_OWNER%22%3A%22devops-vesi%22%2C%22GITHUB_REPO%22%3A%22devops-skills%22%7D%7D)**
+**[📦 Install DevOps MCP - Vinci Energies](vscode:mcp/install?%7B%22name%22%3A%22devops%22%2C%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22%40devops-vinci%2Fmcp%22%5D%2C%22env%22%3A%7B%22GITHUB_OWNER%22%3A%22devops-vesi%22%2C%22GITHUB_REPO%22%3A%22devops-skills%22%7D%7D)**
 
-✅ **C'est tout !** Aucune configuration supplémentaire nécessaire.
+✅ **That's it!** No further configuration needed.
 
 ---
 
-### Configuration manuelle (alternative)
+### Manual configuration (alternative)
 
 ```bash
-npm install -g @devops/mcp
+npm install -g @devops-vinci/mcp
 ```
 
-Puis ajoutez cette configuration dans `.cursor/mcp.json` :
+Then add this configuration to `.cursor/mcp.json`:
 
 ```json
 {
   "mcpServers": {
     "devops": {
       "command": "node",
-      "args": ["@devops/mcp"],
+      "args": ["@devops-vinci/mcp"],
       "env": {
         "GITHUB_OWNER": "devops-vesi",
         "GITHUB_REPO": "devops-skills"
@@ -42,20 +43,20 @@ Puis ajoutez cette configuration dans `.cursor/mcp.json` :
 }
 ```
 
-## Outils disponibles
+## Available tools
 
 ### `list_skills`
-Liste tous les skills DevOps disponibles dans votre repository GitHub.
+Lists all available DevOps skills in your GitHub repository.
 
 ### `fetch_skill`
-Récupère le contenu d'un skill spécifique depuis GitHub.
+Fetches the content of a specific skill from GitHub.
 
-## Exemples d'utilisation
+## Usage examples
 
-Demandez simplement à Copilot :
-- "Liste les skills disponibles"
-- "Récupère le skill documentation-templates"
-- "Génère la documentation pour ce projet Fiori"
+Just ask Copilot:
+- "List available skills"
+- "Fetch the documentation-templates skill"
+- "Generate documentation for this Fiori project"
 
 ## License
 

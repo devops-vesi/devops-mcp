@@ -1,6 +1,6 @@
 {
-  "name": "@devops/mcp",
-  "version": "1.0.0",
+  "name": "@devops-vinci/mcp",
+  "version": "1.0.1",
   "description": "MCP server pour récupérer des skills DevOps depuis GitHub (templates de documentation SAP Fiori, standards de code, bonnes pratiques)",
   "license": "MIT",
   "type": "module",
