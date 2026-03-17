@@ -32,7 +32,7 @@ Then add this configuration to `.cursor/mcp.json`:
 {
   "mcpServers": {
     "devops": {
-      "command": "node",
+      "command": "npx",
       "args": ["@devops-vinci/mcp"],
       "env": {
         "GITHUB_OWNER": "devops-vesi",
