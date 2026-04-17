@@ -5,7 +5,7 @@ MCP (Model Context Protocol) server to fetch DevOps skills from GitHub (SAP Fior
 
 ## Installation
 
-### Quick installation (for your colleagues)
+### Quick installation
 
 1. Install the package:
 ```bash
