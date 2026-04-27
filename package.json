@@ -1,6 +1,6 @@
 {
   "name": "@devops-vinci/mcp",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "MCP server pour récupérer des skills DevOps depuis GitHub (templates de documentation SAP Fiori, standards de code, bonnes pratiques)",
   "license": "MIT",
   "type": "module",
@@ -36,5 +36,9 @@
     "dotenv": "^17.2.4",
     "octokit": "^5.0.5",
     "zod": "^3.25.76"
+  },
+  "publishConfig": {
+    "registry": "https://nexusrepos.vinci-energies.net/repository/codex-development-snapshots/",
+    "access": "restricted"
   }
 }
